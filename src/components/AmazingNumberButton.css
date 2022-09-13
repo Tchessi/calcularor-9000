@@ -1,0 +1,23 @@
+.button-wrapper {
+	height: 4em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+	color: rgb(0, 0, 0);
+	flex: 1;
+	border-radius: 50%;
+	font-weight: 600; 
+	cursor: pointer;
+}
+
+
+#buttonActive:active  {
+	background-color: #ababaac8;
+	transition: 200ms ease-in-out;
+}
+
+.row {
+	display: flex;
+	padding-bottom: 4px;
+}

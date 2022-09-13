@@ -1,0 +1,18 @@
+#operation-active-btn {
+	height: 4em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+	color: rgb(0, 0, 0);
+	flex: 1;
+	border-radius: 50%;
+	background-color: #d6d6d6ab;
+	font-weight: 600; 
+	cursor: pointer;
+}
+
+#operation-active-btn:active {
+		background-color: #61606060;
+		transition: 200ms ease-in-out;
+}
