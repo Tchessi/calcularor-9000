@@ -1,9 +1,12 @@
 import React from 'react';
-import './AmazingNumberButton.css'
+import './AmazingNumberButton.css';
 
-const AmazingNumberButton = ({symbol}) => {
+const AmazingNumberButton = ({ symbol, handleClick }) => {
 	return (
-		<div className='button-wrapper' id='buttonActive'>
+		<div
+			onClick={() => handleClick(symbol)}
+			className="button-wrapper"
+			id="buttonActive">
 			{symbol}
 		</div>
 	);

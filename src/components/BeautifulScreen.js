@@ -1,14 +1,16 @@
 import React from 'react';
 import './BeautifulScreen.css';
 
-const BeautifulScreen = () => {
+const BeautifulScreen = ({text, result}) => {
 	return (
-		<div className="input-wrapper" placeholder="CALCULATRICE">
+		<div className="input-wrapper">
 			<div className="result">
-				<h2>Result</h2>
+				<h2>
+					{result}
+				</h2>
 			</div>
 			<div className="text">
-				<h3>Text</h3>
+				<h3>{text}</h3>
 			</div>
 		</div>
 	);
