@@ -4,6 +4,7 @@ import AmazingNumberButton from './AmazingNumberButton';
 import BeautifulScreen from './BeautifulScreen';
 import MagnificientEqualButton from './MagnificientEqualButton';
 import GreatOperationButton from './GreatOperationButton';
+import ItSOverNineThousand from "./ItSOverNineThousand";
 
 import * as math from 'mathjs';
 
@@ -24,13 +25,16 @@ const Calculator = () => {
 		const input = text.join("");
 
 		setResult(math.evaluate(input));
+		
 	}
-
+ 
+	
 
 	return (
 		<div className="Calulator">
 			<div className="calc-wrapper">
 				<BeautifulScreen text={text} result={result} />
+				<ItSOverNineThousand />
 				<div className="bgNumber">
 					<div className="line"></div>
 					<div className="row">
@@ -57,7 +61,10 @@ const Calculator = () => {
 						<AmazingNumberButton symbol="AC" handleClick={resetInput} />
 						<GreatOperationButton operationbtn="+" handleClick={addTotext} />
 					</div>
-					<MagnificientEqualButton equal="=" handleClick={calculateResult} />
+					<div className="row">
+						<MagnificientEqualButton saveBtn="Save" color="green" />
+						<MagnificientEqualButton equal="=" handleClick={calculateResult} />
+					</div>
 				</div>
 			</div>
 		</div>

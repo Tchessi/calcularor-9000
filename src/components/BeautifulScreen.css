@@ -15,4 +15,5 @@
 .text {
 	flex: 1;
 	font-size: 20px;
+	color: rgb(135, 134, 130);
 }
