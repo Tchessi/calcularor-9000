@@ -5,6 +5,8 @@ import BeautifulScreen from './BeautifulScreen';
 import MagnificientEqualButton from './MagnificientEqualButton';
 import GreatOperationButton from './GreatOperationButton';
 import ItSOverNineThousand from "./ItSOverNineThousand";
+import SaveButton from "./SaveButton";
+
 
 import * as math from 'mathjs';
 
@@ -22,13 +24,16 @@ const Calculator = () => {
 	};
 
 	const calculateResult = () => {
+
 		const input = text.join("");
 
 		setResult(math.evaluate(input));
 		
+		// window.addEventListener('error', (e) => {
+		// 	alert('Oups!!! Une erreur est survenue dans votre calcul : ' + e.message);
+		// });
 	}
  
-	
 
 	return (
 		<div className="Calulator">
@@ -62,7 +67,7 @@ const Calculator = () => {
 						<GreatOperationButton operationbtn="+" handleClick={addTotext} />
 					</div>
 					<div className="row">
-						<MagnificientEqualButton saveBtn="Save" color="green" />
+						<SaveButton saveBtn="Save"  />
 						<MagnificientEqualButton equal="=" handleClick={calculateResult} />
 					</div>
 				</div>
