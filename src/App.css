@@ -5,7 +5,8 @@ body {
 h1 {
 	color: #fff;
 	text-transform: uppercase;
-  padding-bottom: 30px;
+	border: 2px solid white;
+	padding: 5px 10px;
 }
 
 .App {
@@ -44,3 +45,4 @@ h1 {
   margin: auto;
   
 }
+

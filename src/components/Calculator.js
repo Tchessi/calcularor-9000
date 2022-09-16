@@ -26,12 +26,14 @@ const Calculator = () => {
 	const calculateResult = () => {
 
 		const input = text.join("");
-
-		setResult(math.evaluate(input));
 		
-		// window.addEventListener('error', (e) => {
-		// 	alert('Oups!!! Une erreur est survenue dans votre calcul : ' + e.message);
-		// });
+	
+			setResult(math.evaluate(input));
+			setText('');
+		
+		window.addEventListener('error', (e) => {
+			alert('Oups!!! Une erreur est survenue dans votre calcul : ' + e.message);
+		});
 	}
  
 
@@ -39,7 +41,7 @@ const Calculator = () => {
 		<div className="Calulator">
 			<div className="calc-wrapper">
 				<BeautifulScreen text={text} result={result} />
-				<ItSOverNineThousand />
+				
 				<div className="bgNumber">
 					<div className="line"></div>
 					<div className="row">
@@ -67,7 +69,8 @@ const Calculator = () => {
 						<GreatOperationButton operationbtn="+" handleClick={addTotext} />
 					</div>
 					<div className="row">
-						<SaveButton saveBtn="Save"  />
+						<SaveButton saveBtn="Save" />
+						{ result > 9000 && setResult(<ItSOverNineThousand  IsOver9000="It's Over 9000 !!!"/>)}
 						<MagnificientEqualButton equal="=" handleClick={calculateResult} />
 					</div>
 				</div>

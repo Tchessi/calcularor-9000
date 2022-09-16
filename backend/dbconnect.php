@@ -14,7 +14,10 @@ if (!$conn) {
  
 echo "Connected successfully";
 
-$sql = "INSERT INTO historical (id, operation, total ) VALUES (DEFAULT, '159+1', '160')";
+if (is_ajax()) {
+if (isset($_POST["action"]) && !empty($_POST["action"])) {
+$sql =
+"INSERT INTO historical (id, operation, total) VALUES ( DEFAULT,'" . $_POST["operation"] . "','" . $_POST["total"] . "')";
 if (mysqli_query($conn, $sql)) {
       echo "New record created successfully";
 } else {
@@ -33,6 +36,12 @@ mysqli_free_result($result);
 // print_r($row);
 
 $infos = json_encode($row);
-print_r($infos);
-
+// print_r($infos);
+}
+}
 mysqli_close($conn);
+
+function is_ajax()
+{
+      return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
+}

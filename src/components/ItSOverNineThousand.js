@@ -1,10 +1,11 @@
 import React from 'react';
+import './ItSOverNineThousand.css'
 
 
-const ItSOverNineThousand = ({ props }) => {
+const ItSOverNineThousand = ({ IsOver9000 }) => {
 	return (
 		<div>
-			<h3>Is Over 9000</h3>
+			<h5 className="over">{IsOver9000}</h5>
 		</div>
 	);
 };
