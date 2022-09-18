@@ -1,53 +1,47 @@
-import React, { Component } from 'react';
+import { useState, useEffect } from 'react';
 
-class Historical extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			error: null,
-			isLoaded: false,
-			items: [],
+function Historical() {
+	const [error, setError] = useState(null);
+	const [isLoaded, setIsLoaded] = useState(false);
+	const [items, setItems] = useState([]);
+
+
+	useEffect(() => {
+		const requestOptions = {
+			mode: 'cors',
+			method: 'GET',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(),
 		};
-	}
-
-	componentDidMount() {
-		fetch('http://localhost:8000/dbconnect.php/{$infos}')
-			.then((res) => res.json())
+		fetch('http://localhost:8000/dbconnect.php', requestOptions)
+			.then((data) => data.json())
 			.then(
-				(result) => {
-					this.setState({
-						isLoaded: true,
-						items: result.items,
-					});
-					console.log(result)
+				(data) => {
+					setIsLoaded(true);
+					setItems(data.items);
 				},
-
 				(error) => {
-					this.setState({
-						isLoaded: true,
-						error,
-					});
+					setIsLoaded(true);
+					setError(error);
 				}
-			);
-	}
+				);
+			}, []);
+			;
 
-	render() {
-		const { error, isLoaded, items } = this.state;
-		if (error) {
-			return <div>Erreur : {error.message}</div>;
-		} else if (!isLoaded) {
-			return <div>Chargement…</div>;
-		} else {
-			return (
-				<ul>
-					{items.map((item) => (
-						<li key={item.name}>
-							{item.name} {item.price}
-						</li>
-					))}
-				</ul>
-			);
-		}
+	if (error) {
+		return <div id="history-error"><span>Erreur</span> : {error.message}</div>;
+	} else if (!isLoaded) {
+		return <div>Chargement...</div>;
+	} else {
+		return (
+			<ul>
+				{items.map((item) => (
+					<li key={item.operation}>
+						{item.operation} {item.total}
+					</li>
+				))}
+			</ul>
+		);
 	}
 }
 

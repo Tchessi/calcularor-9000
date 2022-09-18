@@ -5,6 +5,7 @@
 	align-items: flex-end;
 	flex-direction: column;
 	padding: 15px;
+	position: relative;
 }
 
 .result {
